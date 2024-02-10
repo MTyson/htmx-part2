@@ -1,0 +1,15 @@
+doctype html
+h1 Quotes
+table
+  thead
+    tr
+      th Quote
+      th Author
+      th Actions
+  tbody(hx-target="closest tr" hx-swap="outerHTML")
+    each quote in quotes
+      tr(id=`quote-${quote._id}`)
+        td #{quote.quote}
+        td #{quote.author}
+        td
+          button(hx-delete=`/quotes/${quote._id}` hx-trigger="click" hx-confirm="Are you sure?") Delete

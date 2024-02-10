@@ -1,0 +1,57 @@
+<style>
+  body {
+    font-family: sans-serif; /* Use a sans-serif font */
+    margin: 40px; /* Add some spacing around the content */
+  }
+
+  h1, h2, h3 {
+    font-weight: bold; /* Make headings bold */
+  }
+
+  table {
+    border-collapse: collapse; /* Remove spacing between table cells */
+    width: 100%; /* Make the table full width */
+    margin-bottom: 20px; /* Add spacing below the table */
+  }
+
+  th, td {
+    padding: 8px; /* Add padding inside table cells */
+    text-align: left; /* Align text to the left */
+    border: 1px solid #ddd; /* Add a light gray border */
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2; /* Add a light gray background for even rows */
+  }
+
+  input[type="text"] {
+    padding: 10px; /* Add padding to text inputs */
+    border: 1px solid #ccc; /* Add a light gray border */
+    border-radius: 4px; /* Round the corners of the inputs */
+  }
+
+  button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Add padding to buttons */
+    border: none; /* Remove default button border */
+    border-radius: 4px; /* Round the corners of the buttons */
+    cursor: pointer; /* Change cursor to a pointer when hovering */
+  }
+
+  button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+  }
+</style>
+
+<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  <!-- have a button POST a click via AJAX -->
+  <form hx-post="/add-quote" hx-swap-oop="beforeend:#data-list">
+    <input type="text" name="quote" placeholder="Enter quote">
+    <input type="text" name="author" placeholder="Enter author">
+    <button>Add</button>
+</form>
+  <ul id="data-list"></ul>
+  <button hx-get="/quotes" hx-target="#data-list">Load Data</button>
+
+
